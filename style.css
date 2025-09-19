@@ -17,9 +17,9 @@ body {
 }
 
 .stem {
-    width: 10px;
+    width: 8px;
     height: 0;
-    background: linear-gradient(to top, #388E3C, #4CAF50, #81C784);
+    background: linear-gradient(to top, #145214, #1b8a3b, #3bd96f);
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -32,86 +32,60 @@ body {
     width: 200px;
     height: 200px;
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.petals-back, .petals-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 
 .petal {
     position: absolute;
     width: 80px;
-    height: 160px;
+    height: 140px;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0) rotate(var(--rotation));
     transform-origin: bottom center;
-    box-shadow: 0 0 15px 5px rgba(255, 165, 0, 0.8);
-    animation: bloom 3s ease-in-out forwards;
+    background: linear-gradient(to top, #40c4ff, #80d8ff);
+    box-shadow: 0 0 15px 5px rgba(64, 196, 255, 0.6);
+    animation: bloom 2.5s ease-in-out forwards;
 }
 
-.petals-back .petal {
-    background: linear-gradient(to top, #FFD700, #FFC107);
-    animation-delay: 2.5s;
-    z-index: 1;
-}
+.petal-b1 { --rotation: 0deg;  animation-delay: 2s; }
+.petal-b2 { --rotation: 72deg; animation-delay: 2.2s; }
+.petal-b3 { --rotation: 144deg; animation-delay: 2.4s; }
+.petal-b4 { --rotation: 216deg; animation-delay: 2.6s; }
+.petal-b5 { --rotation: 288deg; animation-delay: 2.8s; }
 
-.petals-front .petal {
-    background: linear-gradient(to top, #FFC107, #FFB300);
-    animation-delay: 2.8s;
-    z-index: 2;
-}
-
-.petals-back .petal-b1 { transform: rotate(0deg) scale(0); }
-.petals-back .petal-b2 { transform: rotate(72deg) scale(0); }
-.petals-back .petal-b3 { transform: rotate(144deg) scale(0); }
-.petals-back .petal-b4 { transform: rotate(216deg) scale(0); }
-.petals-back .petal-b5 { transform: rotate(288deg) scale(0); }
-
-.petals-front .petal-f1 { transform: rotate(36deg) scale(0); }
-.petals-front .petal-f2 { transform: rotate(108deg) scale(0); }
-.petals-front .petal-f3 { transform: rotate(180deg) scale(0); }
-.petals-front .petal-f4 { transform: rotate(252deg) scale(0); }
-.petals-front .petal-f5 { transform: rotate(324deg) scale(0); }
+.petal-f1 { --rotation: 36deg;  animation-delay: 3s; }
+.petal-f2 { --rotation: 108deg; animation-delay: 3.2s; }
+.petal-f3 { --rotation: 180deg; animation-delay: 3.4s; }
+.petal-f4 { --rotation: 252deg; animation-delay: 3.6s; }
+.petal-f5 { --rotation: 324deg; animation-delay: 3.8s; }
 
 .stamen {
-    width: 30px;
-    height: 30px;
-    background-color: #FFECB3;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #fff176, #fbc02d);
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    box-shadow: 0 0 10px #FFECB3;
+    box-shadow: 0 0 20px #fff176, 0 0 40px #fbc02d;
     z-index: 3;
     animation: grow-stamen 1s ease-out forwards;
     animation-delay: 4.5s;
 }
 
-/* Keyframe animations */
+/* Keyframes */
 @keyframes grow-stem {
-    to {
-        height: 350px;
-    }
+    to { height: 320px; }
 }
 
 @keyframes bloom {
-    0% {
-        opacity: 0;
-        transform: scale(0) rotate(var(--rotation));
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(var(--rotation));
-        box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.8), 0 0 40px 10px rgba(255, 165, 0, 0.5);
-    }
+    0% { opacity: 0; transform: scale(0) rotate(var(--rotation)); }
+    100% { opacity: 1; transform: scale(1) rotate(var(--rotation)); }
 }
 
 @keyframes grow-stamen {
@@ -119,5 +93,4 @@ body {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-}
-
+    }
